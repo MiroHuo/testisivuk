@@ -8,11 +8,10 @@
 
 <style>
 * {margin:0; padding:0; box-sizing:border-box;}
-body {font-family:'Poppins', sans-serif; line-height:1.6; color:#333;}
+body {font-family:'Poppins', sans-serif; line-height:1.6; color:#333; background:#f9f9f9;}
 
 header {
 background:#111;
-color:white;
 padding:15px 5%;
 position:sticky;
 top:0;
@@ -40,6 +39,7 @@ gap:25px;
 color:white;
 text-decoration:none;
 font-weight:500;
+transition:0.3s;
 }
 
 .nav-links a:hover {
@@ -50,6 +50,7 @@ color:#007BFF;
 display:none;
 font-size:28px;
 cursor:pointer;
+color:white;
 }
 
 .hero {
@@ -64,15 +65,16 @@ padding:120px 20px;
 .hero p {margin-top:15px;}
 
 .section {
-padding:70px 10%;
+padding:80px 10%;
 }
 
 .section h2 {
-margin-bottom:25px;
+margin-bottom:40px;
 color:#007BFF;
+text-align:center;
 }
 
-.services {
+.services-grid {
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:30px;
@@ -81,33 +83,51 @@ gap:30px;
 .card {
 background:white;
 padding:20px;
-border-radius:10px;
-box-shadow:0 5px 20px rgba(0,0,0,0.08);
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+transition:0.3s;
+}
+
+.card:hover {
+transform:translateY(-5px);
 }
 
 .card img {
 width:100%;
+height:200px;
+object-fit:cover;
 border-radius:8px;
 margin-top:15px;
 }
 
 .review {
-background:#f5f5f5;
-padding:20px;
-border-radius:8px;
-margin-bottom:15px;
+background:white;
+padding:25px;
+border-radius:12px;
+box-shadow:0 5px 20px rgba(0,0,0,0.06);
+margin-bottom:20px;
+}
+
+.review span {
+color:#007BFF;
+font-weight:600;
+}
+
+.contact-info {
+text-align:center;
 }
 
 .contact-info p {margin-bottom:10px;}
 
 .button {
 display:inline-block;
-margin-top:20px;
-padding:12px 20px;
+margin-top:25px;
+padding:12px 25px;
 background:#007BFF;
 color:white;
 text-decoration:none;
 border-radius:6px;
+transition:0.3s;
 }
 
 .button:hover {background:#0056b3;}
@@ -116,8 +136,8 @@ iframe {
 width:100%;
 height:350px;
 border:0;
-border-radius:10px;
-margin-top:30px;
+border-radius:12px;
+margin-top:40px;
 }
 
 footer {
@@ -125,7 +145,7 @@ background:#111;
 color:white;
 text-align:center;
 padding:20px;
-margin-top:50px;
+margin-top:60px;
 }
 
 /* Mobiili */
@@ -137,9 +157,9 @@ top:70px;
 right:0;
 background:#111;
 flex-direction:column;
-width:200px;
+width:220px;
 display:none;
-padding:20px;
+padding:25px;
 }
 
 .nav-links.active {
@@ -164,10 +184,10 @@ font-size:28px;
 <div class="logo">Sähkölli Ky</div>
 <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 <div class="nav-links" id="navLinks">
-<a href="#palvelut">Palvelut</a>
-<a href="#suunnittelu">Suunnittelu</a>
-<a href="#arvostelut">Arvostelut</a>
-<a href="#yhteys">Yhteystiedot</a>
+<a href="#palvelut" onclick="closeMenu()">Palvelut</a>
+<a href="#suunnittelu" onclick="closeMenu()">Suunnittelu</a>
+<a href="#arvostelut" onclick="closeMenu()">Arvostelut</a>
+<a href="#yhteys" onclick="closeMenu()">Yhteystiedot</a>
 </div>
 </nav>
 </header>
@@ -179,45 +199,61 @@ font-size:28px;
 </section>
 
 <section class="section" id="palvelut">
-<h2>Sähköasennukset</h2>
-<p>Teemme sähköasennukset omakotitaloihin, rivitaloihin, halleihin ja toimitiloihin. Toteutamme työt pienistä korjauksista kokonaisurakoihin.</p>
-<img src="Tolppa.jpg" alt="Sähköasennukset" style="width:100%;">
+<h2>Palvelumme</h2>
 
-<h2>Aurinkopaneelit</h2>
-<p>Asennamme aurinkosähköjärjestelmät avaimet käteen -periaatteella.</p>
-<img src="aurinko.jpg" alt="Aurinkopaneelit" style="width:100%;">
+<div class="services-grid">
 
-<h2>Maakaapelityöt</h2>
-<p>Maakaapelin näytöt, vikapaikannukset ja kaivuupalvelut minikaivurilla.</p>
-<img src="kaivuu.jpg" alt="Maakaapelityöt" style="width:100%;">
+<div class="card">
+<h3>Sähköasennukset</h3>
+<p>Omakotitalot, rivitalot, hallit ja toimitilat. Pienistä korjauksista kokonaisurakoihin.</p>
+<img src="Tolppa.jpg" alt="Sähköasennukset">
+</div>
 
-<h2>Kalusto</h2>
-<p>Käytössämme on kolme huoltoautoa, henkilönostin ja minikaivuri.</p>
-<img src="nosti.jpg" alt="Kalusto" style="width:100%;">
+<div class="card">
+<h3>Aurinkopaneelit</h3>
+<p>Avaimet käteen -aurinkosähköjärjestelmät ammattitaidolla.</p>
+<img src="aurinko.jpg" alt="Aurinkopaneelit">
+</div>
+
+<div class="card">
+<h3>Maakaapelityöt</h3>
+<p>Maakaapelin näytöt, vikapaikannukset ja kaivuupalvelut.</p>
+<img src="kaivuu.jpg" alt="Maakaapelityöt">
+</div>
+
+<div class="card">
+<h3>Kalusto</h3>
+<p>Kolme huoltoautoa, henkilönostin ja minikaivuri.</p>
+<img src="nosti.jpg" alt="Kalusto">
+</div>
+
+</div>
 </section>
 
 <section class="section" id="suunnittelu">
 <h2>Sähkösuunnittelu</h2>
-<p>Suunnittelemme sähköjärjestelmät turvallisesti ja energiatehokkaasti. Autamme uudiskohteissa ja saneerauksissa aina ideasta toteutukseen.</p>
-<img src="suunnittelu.jpg" alt="Sähkösuunnittelu" style="width:100%;">
+<p style="text-align:center; max-width:800px; margin:auto;">
+Suunnittelemme sähköjärjestelmät turvallisesti ja energiatehokkaasti.
+Autamme uudiskohteissa ja saneerauksissa ideasta toteutukseen.
+</p>
 </section>
 
 <section class="section" id="arvostelut">
 <h2>Asiakasarvostelut</h2>
 
 <div class="review">
-★★★★★  
-"Homma toimii ja kaikki onnistuu erinomaisesti. Köllin porukka on ammattitaitoista ja osaa auttaa niin pienemmässä kuin isommassakin sähköön liittyvässä asiassa."  
+<span>★★★★★</span><br>
+"Homma toimii ja kaikki onnistuu erinomaisesti."
 </div>
 
 <div class="review">
-★★★★★  
-"Nopeaa ja asiallista toimintaa vankalla kokemuksella. Suosittelen!"  
+<span>★★★★★</span><br>
+"Nopeaa ja asiallista toimintaa vankalla kokemuksella."
 </div>
 
 <div class="review">
-★★  
-"En saanut vastausta"  
+<span>★★</span><br>
+"En saanut vastausta"
 </div>
 
 </section>
@@ -229,13 +265,10 @@ font-size:28px;
 <p><strong>Puhelin:</strong> 040 524 3390</p>
 <p><strong>Sähköposti:</strong> sahkolli.juha@gmail.com</p>
 <p><strong>Osoite:</strong> Jarvalantie 235, 15880 Hollola</p>
+<a href="mailto:sahkolli.juha@gmail.com" class="button">Lähetä sähköposti</a>
 </div>
 
-<a href="mailto:sahkolli.juha@gmail.com" class="button">Lähetä sähköposti</a>
-
-<iframe 
-src="https://www.google.com/maps?q=Jarvalantie+235+Hollola&output=embed">
-</iframe>
+<iframe src="https://www.google.com/maps?q=Jarvalantie+235+Hollola&output=embed"></iframe>
 
 </section>
 
@@ -246,6 +279,9 @@ src="https://www.google.com/maps?q=Jarvalantie+235+Hollola&output=embed">
 <script>
 function toggleMenu(){
 document.getElementById("navLinks").classList.toggle("active");
+}
+function closeMenu(){
+document.getElementById("navLinks").classList.remove("active");
 }
 </script>
 
