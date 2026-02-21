@@ -3,13 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sähkölli Ky | Sähköurakointi Lahden seudulla</title>
+
+<title>Sähkölli Ky | Sähköurakointi & sähkösuunnittelu Lahden seudulla</title>
+<meta name="description" content="Sähkölli Ky (Hollola) – sähköasennukset, sähkösuunnittelu, maakaapelityöt, aurinkopaneelit ja kaivuupalvelut. Palvelemme Lahden seudulla: Lahti, Hollola, Asikkala, Nastola ja lähialueet.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://sahkolli.fi/">
+<meta name="theme-color" content="#111111">
+
+<!-- Open Graph (some + WhatsApp previews) -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fi_FI">
+<meta property="og:title" content="Sähkölli Ky | Sähköurakointi Lahden seudulla">
+<meta property="og:description" content="Sähköasennukset, sähkösuunnittelu, maakaapelityöt, aurinkopaneelit ja kaivuupalvelut Hollolasta Lahden seudulle.">
+<meta property="og:url" content="https://sahkolli.fi/">
+<!-- Jos teillä on some-jaolle sopiva kuva, lisää se ja vaihda polku -->
+<meta property="og:image" content="https://sahkolli.fi/og-kuva.jpg">
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 * {margin:0; padding:0; box-sizing:border-box;}
 body {font-family:'Poppins', sans-serif; line-height:1.6; color:#333; background:#f9f9f9;}
+a {color:inherit;}
 
+/* Header + nav */
 header {
 background:#111;
 padding:15px 5%;
@@ -27,7 +44,7 @@ align-items:center;
 .logo {
 font-size:24px;
 font-weight:700;
-color:#007BFF;
+color:#007BFF; /* sähkönsininen */
 }
 
 .nav-links {
@@ -42,9 +59,7 @@ font-weight:500;
 transition:0.3s;
 }
 
-.nav-links a:hover {
-color:#007BFF;
-}
+.nav-links a:hover { color:#007BFF; }
 
 .menu-toggle {
 display:none;
@@ -53,16 +68,17 @@ cursor:pointer;
 color:white;
 }
 
+/* Hero */
 .hero {
-background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
+background:linear-gradient(rgba(0,0,0,0.72),rgba(0,0,0,0.72)),
 url('kalusto.jpg') center/cover;
 color:white;
 text-align:center;
 padding:120px 20px;
 }
 
-.hero h1 {font-size:42px;}
-.hero p {margin-top:15px;}
+.hero h1 {font-size:42px; max-width:1000px; margin:0 auto;}
+.hero p {margin-top:15px; max-width:900px; margin-left:auto; margin-right:auto; opacity:0.95;}
 
 .section {
 padding:80px 10%;
@@ -74,6 +90,14 @@ color:#007BFF;
 text-align:center;
 }
 
+.lead {
+text-align:center;
+max-width:900px;
+margin:0 auto 25px auto;
+color:#444;
+}
+
+/* Services cards */
 .services-grid {
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -85,12 +109,12 @@ background:white;
 padding:20px;
 border-radius:12px;
 box-shadow:0 10px 30px rgba(0,0,0,0.08);
-transition:0.3s;
+transition:transform 0.3s ease;
 }
 
-.card:hover {
-transform:translateY(-5px);
-}
+.card:hover { transform:translateY(-5px); }
+
+.card h3 { margin-bottom:10px; }
 
 .card img {
 width:100%;
@@ -100,6 +124,7 @@ border-radius:8px;
 margin-top:15px;
 }
 
+/* Reviews */
 .review {
 background:white;
 padding:25px;
@@ -108,16 +133,11 @@ box-shadow:0 5px 20px rgba(0,0,0,0.06);
 margin-bottom:20px;
 }
 
-.review span {
-color:#007BFF;
-font-weight:600;
-}
+.review span { color:#007BFF; font-weight:600; }
 
-.contact-info {
-text-align:center;
-}
-
-.contact-info p {margin-bottom:10px;}
+/* Contact */
+.contact-info { text-align:center; }
+.contact-info p { margin-bottom:10px; }
 
 .button {
 display:inline-block;
@@ -130,7 +150,7 @@ border-radius:6px;
 transition:0.3s;
 }
 
-.button:hover {background:#0056b3;}
+.button:hover { background:#0056b3; }
 
 iframe {
 width:100%;
@@ -140,6 +160,7 @@ border-radius:12px;
 margin-top:40px;
 }
 
+/* Footer */
 footer {
 background:#111;
 color:white;
@@ -148,9 +169,21 @@ padding:20px;
 margin-top:60px;
 }
 
-/* Mobiili */
-@media(max-width:768px){
+/* ===== Fade-in on scroll ===== */
+.fade {
+opacity:0;
+transform:translateY(18px);
+transition:opacity 700ms ease, transform 700ms ease;
+will-change:opacity, transform;
+}
 
+.fade.show {
+opacity:1;
+transform:translateY(0);
+}
+
+/* Mobiili nav */
+@media(max-width:768px){
 .nav-links {
 position:absolute;
 top:70px;
@@ -160,21 +193,44 @@ flex-direction:column;
 width:220px;
 display:none;
 padding:25px;
+border-radius:0 0 0 12px;
 }
-
-.nav-links.active {
-display:flex;
-}
-
-.menu-toggle {
-display:block;
-}
-
-.hero h1 {
-font-size:28px;
-}
+.nav-links.active { display:flex; }
+.menu-toggle { display:block; }
+.hero h1 { font-size:28px; }
+.section { padding:70px 7%; }
 }
 </style>
+
+<!-- LocalBusiness JSON-LD (SEO) -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"ElectricalContractor",
+  "name":"Sähkölli Ky",
+  "url":"https://sahkolli.fi/",
+  "telephone":"+358405243390",
+  "email":"sahkolli.juha@gmail.com",
+  "foundingDate":"1997",
+  "address":{
+    "@type":"PostalAddress",
+    "streetAddress":"Jarvalantie 235",
+    "postalCode":"15880",
+    "addressLocality":"Hollola",
+    "addressCountry":"FI"
+  },
+  "areaServed":[
+    "Lahti","Hollola","Asikkala","Nastola","Lahden seutu"
+  ],
+  "serviceType":[
+    "Sähköasennukset",
+    "Sähkösuunnittelu",
+    "Maakaapelityöt",
+    "Aurinkopaneelit",
+    "Kaivuupalvelut"
+  ]
+}
+</script>
 </head>
 
 <body>
@@ -182,8 +238,8 @@ font-size:28px;
 <header>
 <nav>
 <div class="logo">Sähkölli Ky</div>
-<div class="menu-toggle" onclick="toggleMenu()">☰</div>
-<div class="nav-links" id="navLinks">
+<div class="menu-toggle" onclick="toggleMenu()" aria-label="Avaa valikko" role="button">☰</div>
+<div class="nav-links" id="navLinks" aria-label="Päänavigaatio">
 <a href="#palvelut" onclick="closeMenu()">Palvelut</a>
 <a href="#suunnittelu" onclick="closeMenu()">Suunnittelu</a>
 <a href="#arvostelut" onclick="closeMenu()">Arvostelut</a>
@@ -193,65 +249,67 @@ font-size:28px;
 </header>
 
 <section class="hero">
-<h1>Luotettavaa sähköurakointia vuodesta 1997</h1>
-<p>Yli 20 vuoden kokemuksella Lahden seudulla</p>
-<a href="#yhteys" class="button">Pyydä tarjous</a>
+<h1 class="fade">Luotettavaa sähköurakointia ja sähkösuunnittelua Lahden seudulla</h1>
+<p class="fade" style="transition-delay:120ms;">
+Toimimme Hollolasta käsin vuodesta 1997. Palvelemme alueella Lahti, Hollola, Asikkala, Nastola ja lähialueet.
+</p>
+<a href="#yhteys" class="button fade" style="transition-delay:220ms;">Pyydä tarjous</a>
 </section>
 
 <section class="section" id="palvelut">
-<h2>Palvelumme</h2>
+<h2 class="fade">Palvelumme</h2>
+<p class="lead fade" style="transition-delay:80ms;">
+Sähkölli Ky toteuttaa sähkötyöt pienistä korjauksista kokonaisurakoihin. Teemme työt turvallisesti, siististi ja sovitussa aikataulussa.
+</p>
 
 <div class="services-grid">
+  <div class="card fade">
+    <h3>Sähköasennukset</h3>
+    <p>Omakotitalot, rivitalot, hallit ja toimitilat. Uudisrakentaminen ja saneeraukset.</p>
+    <img src="Tolppa.jpg" alt="Sähköasennuksia työmaalla" loading="lazy" width="1200" height="800">
+  </div>
 
-<div class="card">
-<h3>Sähköasennukset</h3>
-<p>Omakotitalot, rivitalot, hallit ja toimitilat. Pienistä korjauksista kokonaisurakoihin.</p>
-<img src="Tolppa.jpg" alt="Sähköasennukset">
-</div>
+  <div class="card fade" style="transition-delay:70ms;">
+    <h3>Aurinkopaneelit</h3>
+    <p>Avaimet käteen -aurinkosähköjärjestelmät sekä tarvittaessa huolto ja muutostyöt.</p>
+    <img src="aurinko.jpg" alt="Aurinkopaneeliasennus katolla" loading="lazy" width="1200" height="800">
+  </div>
 
-<div class="card">
-<h3>Aurinkopaneelit</h3>
-<p>Avaimet käteen -aurinkosähköjärjestelmät ammattitaidolla.</p>
-<img src="aurinko.jpg" alt="Aurinkopaneelit">
-</div>
+  <div class="card fade" style="transition-delay:140ms;">
+    <h3>Maakaapelityöt</h3>
+    <p>Maakaapelin näytöt, vikapaikannukset ja kaivuupalvelut minikaivurilla.</p>
+    <img src="kaivuu.jpg" alt="Maakaapelityöt ja kaivuu" loading="lazy" width="1200" height="800">
+  </div>
 
-<div class="card">
-<h3>Maakaapelityöt</h3>
-<p>Maakaapelin näytöt, vikapaikannukset ja kaivuupalvelut.</p>
-<img src="kaivuu.jpg" alt="Maakaapelityöt">
-</div>
-
-<div class="card">
-<h3>Kalusto</h3>
-<p>Kolme huoltoautoa, henkilönostin ja minikaivuri.</p>
-<img src="nosti.jpg" alt="Kalusto">
-</div>
-
+  <div class="card fade" style="transition-delay:210ms;">
+    <h3>Kalusto</h3>
+    <p>Kolme huoltoautoa, henkilönostin ja minikaivuri — tehokas kalusto joustavaan palveluun.</p>
+    <img src="nostin.jpg" alt="Henkilönostin sähköasennustöissä" loading="lazy" width="1200" height="800">
+  </div>
 </div>
 </section>
 
 <section class="section" id="suunnittelu">
-<h2>Sähkösuunnittelu</h2>
-<p style="text-align:center; max-width:800px; margin:auto;">
-Suunnittelemme sähköjärjestelmät turvallisesti ja energiatehokkaasti.
-Autamme uudiskohteissa ja saneerauksissa ideasta toteutukseen.
+<h2 class="fade">Sähkösuunnittelu</h2>
+<p class="lead fade" style="max-width:950px;">
+Suunnittelemme sähköjärjestelmät turvallisesti ja energiatehokkaasti. Autamme uudiskohteissa ja saneerauksissa aina ideasta toteutukseen.
 </p>
 </section>
 
 <section class="section" id="arvostelut">
-<h2>Asiakasarvostelut</h2>
+<h2 class="fade">Asiakasarvostelut</h2>
 
-<div class="review">
+<div class="review fade">
 <span>★★★★★</span><br>
-"Homma toimii ja kaikki onnistuu erinomaisesti."
+"Homma toimii ja kaikki onnistuu erinomaisesti. Köllin porukka on ammattitaitoista ja osaa auttaa niin pienemmässä kuin isommassakin sähköön liittyvässä asiassa."
 </div>
 
-<div class="review">
+<div class="review fade" style="transition-delay:80ms;">
 <span>★★★★★</span><br>
-"Nopeaa ja asiallista toimintaa vankalla kokemuksella."
+"Nopeaa ja asiallista toimintaa vankalla kokemuksella. Suosittelen!"
 </div>
 
-<div class="review">
+<div class="review fade" style="transition-delay:160ms;">
 <span>★★</span><br>
 "En saanut vastausta"
 </div>
@@ -259,30 +317,49 @@ Autamme uudiskohteissa ja saneerauksissa ideasta toteutukseen.
 </section>
 
 <section class="section" id="yhteys">
-<h2>Ota yhteyttä</h2>
+<h2 class="fade">Ota yhteyttä</h2>
 
-<div class="contact-info">
-<p><strong>Puhelin:</strong> 040 524 3390</p>
-<p><strong>Sähköposti:</strong> sahkolli.juha@gmail.com</p>
+<div class="contact-info fade" style="transition-delay:80ms;">
+<p><strong>Puhelin:</strong> <a href="tel:+358405243390">040 524 3390</a></p>
+<p><strong>Sähköposti:</strong> <a href="mailto:sahkolli.juha@gmail.com">sahkolli.juha@gmail.com</a></p>
 <p><strong>Osoite:</strong> Jarvalantie 235, 15880 Hollola</p>
+<p><strong>Toiminta-alue:</strong> Lahti, Hollola, Asikkala, Nastola ja lähialueet</p>
+
 <a href="mailto:sahkolli.juha@gmail.com" class="button">Lähetä sähköposti</a>
 </div>
 
-<iframe src="https://www.google.com/maps?q=Jarvalantie+235+Hollola&output=embed"></iframe>
+<iframe class="fade" style="transition-delay:120ms;"
+  src="https://www.google.com/maps?q=Jarvalantie+235+Hollola&output=embed"
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade"
+  title="Sähkölli Ky – Jarvalantie 235, Hollola">
+</iframe>
 
 </section>
 
 <footer>
-© 2026 Sähkölli Ky | Y-tunnus 1076760-0
+© 2026 Sähkölli Ky | Y-tunnus 1076760-0 | Jarvalantie 235, 15880 Hollola | 040 524 3390
 </footer>
 
 <script>
 function toggleMenu(){
-document.getElementById("navLinks").classList.toggle("active");
+  document.getElementById("navLinks").classList.toggle("active");
 }
 function closeMenu(){
-document.getElementById("navLinks").classList.remove("active");
+  document.getElementById("navLinks").classList.remove("active");
 }
+
+/* Fade-in on scroll: IntersectionObserver */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+      observer.unobserve(entry.target); // animaatio vain kerran
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.fade').forEach(el => observer.observe(el));
 </script>
 
 </body>
